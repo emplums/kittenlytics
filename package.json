@@ -1,0 +1,20 @@
+{
+  "name": "kittenlytics",
+  "version": "1.0.0",
+  "description": "analyzes your cat tweets",
+  "main": "twitter.js",
+  "dependencies": {
+    "twitter-js-client": "^0.0.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emily-plummer/kittenlytics.git"
+  },
+  "author": "@emily-plummer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emily-plummer/kittenlytics/issues"
+  },
+  "homepage": "https://github.com/emily-plummer/kittenlytics"
+}
