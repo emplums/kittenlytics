@@ -1,3 +1,5 @@
+module.exports = {}
+
 //Read & Write node module
 var fs = require('fs');
 
@@ -14,22 +16,24 @@ var error = function (err, response, body) {
 
 //Callback function for successfull API call
 var success = function(data) {
+	//Turns string returned from api into object
 	var tweetObj = JSON.parse(data);
+	//Turns that object into an array
 	var tweetArray = Object.keys(tweetObj).map(function(k) { return tweetObj[k] });
-	catCount(tweetArray);
+	return catCount(tweetArray);
 }
 
 //Gets the users tweets
-function getTweets(user) {
+exports.countTweets function (user) {
 	var api = new Twitter.Twitter(creds.twitter);
-	api.getUserTimeline({screen_name: user, count: '200'}, error, success);
+	api.getUserTimeline({screen_name: user, count: '1000'}, error, success);
 	
 }
 
 //Counts the number of tweets that have cat words in them
 function catCount (tweets) {
 	var num = tweets.map(getTweetContent).filter(getCatTweet).length;
-	console.log("number of cat tweets",num);
+	return num;
 }
 
 // function for map callback in catCount
@@ -46,5 +50,4 @@ function getCatTweet (t) {
 	return RegExp(catWords.join("|")).test(t);
 }
 
-getTweets('emplums');
 
