@@ -34,21 +34,25 @@ function home(request, response){
 function results(request, response) {
 	//Get username from the url of the request
 	var username = request.url.replace('/', "");
-	//Get results by calling imported countTweets function
-	var tweetResults = twitter.countTweets(username);
-	var values = {
-		username: username,
-		tweetResults: tweetResults
+	if (username == "favicon.ico") {
+		return;
 	}
-	if(username.length > 0) {
-		response.writeHead(200, commonHeader);
-		displayer.view('header', {}, response);
-		response.end(function (){
+
+	//Get results by calling imported countTweets function
+	twitter.countTweets(username, function(catCount) {
+		var values = {
+			username: username,
+			tweetResults: catCount
+		};
+
+		if(username.length > 0) {
+			response.writeHead(200, commonHeader);
 			displayer.view('header', {}, response);
 			displayer.view('stats', values, response);
 			displayer.view('footer', {}, response);
-		});
-	}
+			response.end();
+		}
+	});
 }
 
 module.exports.home = home;

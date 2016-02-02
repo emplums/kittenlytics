@@ -18,28 +18,27 @@ http.createServer(function(request, response) {
   router.home(request, response);
   router.results(request, response);
 }).listen(9999);
+
 console.log('Server running at localhost:9999');
+
+//Gets the users tweets
+function countTweets (user, onDone) {
+	var api = new Twitter.Twitter(creds.twitter);
+	api.getUserTimeline({screen_name: user, count: '1000'}, error, function(data) {
+		//Turns string returned from api into object
+		var tweetObj = JSON.parse(data);
+		//Turns that object into an array
+		var tweetArray = Object.keys(tweetObj).map(function(k) { return tweetObj[k] });
+		var count = catCount(tweetArray);
+
+		onDone(count);
+	});
+}
 
 // Callback function for failed API call
 var error = function (err, response, body) {
 	console.log('ERROR [%s]', err);
 };
-
-//Callback function for successfull API call
-var success = function(data) {
-	//Turns string returned from api into object
-	var tweetObj = JSON.parse(data);
-	//Turns that object into an array
-	var tweetArray = Object.keys(tweetObj).map(function(k) { return tweetObj[k] });
-	return catCount(tweetArray);
-}
-
-//Gets the users tweets
-function countTweets (user) {
-	var api = new Twitter.Twitter(creds.twitter);
-	api.getUserTimeline({screen_name: user, count: '1000'}, error, success);
-	
-}
 
 //Counts the number of tweets that have cat words in them
 function catCount (tweets) {
