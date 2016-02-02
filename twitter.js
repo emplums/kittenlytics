@@ -1,5 +1,3 @@
-module.exports = {}
-
 //Read & Write node module
 var fs = require('fs');
 
@@ -8,6 +6,19 @@ var Twitter = require('twitter-js-client');
 
 //API Credentials file
 var creds = JSON.parse(fs.readFileSync('creds.json'));
+
+//Http module
+var http = require('http');
+
+//Router
+var router = require('./router');
+
+//Create Web Server
+http.createServer(function(request, response) {
+  router.home(request, response);
+  router.results(request, response);
+}).listen(9999);
+console.log('Server running at localhost:9999');
 
 // Callback function for failed API call
 var error = function (err, response, body) {
@@ -24,7 +35,7 @@ var success = function(data) {
 }
 
 //Gets the users tweets
-exports.countTweets function (user) {
+function countTweets (user) {
 	var api = new Twitter.Twitter(creds.twitter);
 	api.getUserTimeline({screen_name: user, count: '1000'}, error, success);
 	
@@ -50,4 +61,4 @@ function getCatTweet (t) {
 	return RegExp(catWords.join("|")).test(t);
 }
 
-
+module.exports.countTweets = countTweets;
