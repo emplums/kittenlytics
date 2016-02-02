@@ -22,9 +22,9 @@ function home(request, response){
 				//you must do this because POST will return username='user'
 				//instead of '/username'
 				var query = queryString.parse(postBody.toString());
-				var queryName = query.username;
+
 				//Redirect to results page
-				response.writeHead(303, {'Location': '/', queryName});
+				response.writeHead(303, {'Location': '/' + query.username});
 				response.end();
 			});
 		}
@@ -34,7 +34,8 @@ function home(request, response){
 function results(request, response) {
 	//Get username from the url of the request
 	var username = request.url.replace('/', "");
-	if (username == "favicon.ico") {
+
+	if (username == 'favicon.ico' || username == 'icon.css') {
 		return;
 	}
 
