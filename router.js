@@ -11,7 +11,7 @@ var ecstaticHandler = ecstatic('./');
 function home(request, response){
   //if the request url is /user + anything, return results function
   if (request.url.match(/\/user\/.+/)) return results(request, response);
-  //if the request is empty (browser requests for static files) return ecstatic
+  //if the request url is empty (browser requests for static files) return ecstatic
   if (request.url !== '/') return ecstaticHandler(request, response);
   //if the request is a post then return the handlePost function
   if (request.method ==='POST') return handlePost(request, response);
@@ -19,6 +19,7 @@ function home(request, response){
   handleIndex(request, response);
 }
 
+//Render index templates
 function handleIndex (request, response) {
   response.writeHead(200, commonHeader);
   displayer.view('header', {}, response);
@@ -29,7 +30,7 @@ function handleIndex (request, response) {
 
 function handlePost (request, response) {
   request.on('data', function(postBody){
-  //Get username from form using querystring
+  //Get username object from request url using querystring
   //you must do this because POST will return username='user'
   //instead of '/username'
     var query = queryString.parse(postBody.toString());
@@ -43,13 +44,17 @@ function handlePost (request, response) {
 function results(request, response) {
   //Get username from the url of the request
   var username = request.url.replace('/user/', "");
-  //Get results by calling imported countTweets function
+
+  //Get results by calling imported count tweets function
+  //arguments are the username, and the function to call when
+  //api is successful in twitter.js
   twitter.countTweets(username, function(catCount) {
     var values = {
       username: username,
       tweetResults: catCount
     };
 
+    //render templates & pass in values to stats template
     if(username.length > 0) {
       response.writeHead(200, commonHeader);
       displayer.view('header', {}, response);
