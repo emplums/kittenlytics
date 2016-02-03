@@ -9,9 +9,13 @@ var ecstaticHandler = ecstatic('./');
 
 //Home Route
 function home(request, response){
+  //if the request url is /user + anything, return results function
   if (request.url.match(/\/user\/.+/)) return results(request, response);
+  //if the request is empty (browser requests for static files) return ecstatic
   if (request.url !== '/') return ecstaticHandler(request, response);
+  //if the request is a post then return the handlePost function
   if (request.method ==='POST') return handlePost(request, response);
+  //if none of the above, run handleIndex (show the index page)
   handleIndex(request, response);
 }
 
