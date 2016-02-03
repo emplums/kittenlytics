@@ -7,6 +7,8 @@ Analyzes your tweets based on cat-related word usage 😺
 `npm install`
 
 **Then:**
-`node twitter.js`
+Add your twitter api credentials to `creds.json`
+
+run `node twitter.js`
 
 Now open localhost:9999 in your browser!
