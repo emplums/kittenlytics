@@ -1,4 +1,7 @@
 # kittenlytics
+
+[![Travis](http://img.shields.io/travis/emily-plummer/kittenlytics.svg?style=flat)](https://travis-ci.org/emily-plummer/kittenlytics)
+
 Analyzes your tweets based on cat-related word usage 😺
 
 ## Set-up
@@ -33,8 +36,7 @@ Add the following to the file, replacing "XXX" with your actual values:
 
 `npm install`
 
-**Start kittenlytics:**
-
-`node twitter.js`
+**Then:**
+`npm start`
 
 Now open localhost:9999 in your browser!

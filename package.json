@@ -2,10 +2,10 @@
   "name": "kittenlytics",
   "version": "1.0.0",
   "description": "analyzes your cat tweets",
-  "main": "twitter.js",
+  "main": "index.js",
   "dependencies": {
     "ecstatic": "^1.4.0",
-    "twitter-js-client": "^0.0.1"
+    "twitter-node-client": "BoyCook/TwitterJSClient"
   },
   "devDependencies": {
     "standard": "^5.4.1",
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/emily-plummer/kittenlytics",
   "scripts": {
-    "test": "node test.js"
+    "start": "node index.js",
+    "test": "node tests/test.js"
   }
 }
