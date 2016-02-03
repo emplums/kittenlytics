@@ -1,4 +1,14 @@
 # kittenlytics
 Analyzes your tweets based on cat-related word usage 😺
 
-[![Travis](http://img.shields.io/travis/emily-plummer/kittenlytics.svg?style=flat)](https://travis-ci.org/emily-plummer/kittenlytics)
+## Set-up
+
+**First run:**
+`npm install`
+
+**Then:**
+Add your twitter api credentials to `creds.json`
+
+run `node twitter.js`
+
+Now open localhost:9999 in your browser!
