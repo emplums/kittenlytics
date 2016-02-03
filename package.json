@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/emily-plummer/kittenlytics",
   "scripts": {
-    "test": "standard && node test.js"
+    "test": "node test.js"
   }
 }
