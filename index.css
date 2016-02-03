@@ -6,6 +6,7 @@ body {
 	font-family: 'Grand Hotel', sans-serif;
 	font-size: 110px;
 	color: white;
+	margin-top: 10px;
 }
 .username {
 	font-family: 'Raleway', sans-serif;
@@ -13,4 +14,31 @@ body {
 	font-size: 24px;
 	text-transform: uppercase;
 	color: white;
+}
+
+input {
+	border-radius: 3px;
+	border:1px solid #979797;
+}
+
+.footer {
+	margin-top: 50px;
+	color: white;
+	font-family: 'Raleway', sans-serif;
+}
+
+.stats {
+	font-family: 'Raleway', sans-serif;
+	font-weight: bold;
+	color: white;
+	padding: 60px;
+	font-size: 26px;
+}
+
+img {
+	transform: rotate(0.022turn);
+}
+
+img:hover {
+	transform: rotateX(10deg);
 }
