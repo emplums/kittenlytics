@@ -7,8 +7,8 @@ var ecstatic = require('ecstatic');
 
 var ecstaticHandler = ecstatic('./');
 
-//Home Route
-function home(request, response){
+//Main request router
+function mainRouter(request, response){
   //if the request url is /user + anything, return results function
   if (request.url.match(/\/user\/.+/)) return results(request, response);
   //if the request url is empty (browser requests for static files) return ecstatic
@@ -65,4 +65,4 @@ function results(request, response) {
   });
 }
 
-module.exports = home;
+module.exports = mainRouter;
